@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Prince Design Hub - Premium Creative Agency. Professional Video Editing, Graphic Design, Social Media Management and Branding for Influencers, Creators and Businesses Worldwide." />
+  <meta name="keywords" content="Prince Design Hub, Video Editing, Graphic Design, Social Media Management, Branding, Content Creation, Reels Editing, YouTube Editing, Prince Patel" />
+  <meta name="author" content="Prince Patel - Prince Design Hub" />
+  <meta property="og:title" content="Prince Design Hub - Transforming Ideas Into Viral Visual Content" />
+  <meta property="og:description" content="Premium creative agency offering professional video editing, graphic design, and social media management worldwide." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Prince Design Hub | Transforming Ideas Into Viral Visual Content</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Bricolage Grotesque', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: '#1d3a8f',
+            'primary-dark': '#142b6e',
+            gold: '#c9a227',
+            ivory: '#FAF7F1',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ─── Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #0f172a; background: #FAF7F1; overflow-x: hidden; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Playfair Display', serif; }
+
+    /* ─── Gold shimmer on text ─── */
+    @keyframes shimmer-gold {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    .text-shimmer-gold {
+      background: linear-gradient(90deg,#f59e0b 0%,#fbbf24 20%,#fde68a 40%,#f97316 60%,#fbbf24 80%,#f59e0b 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer-gold 3.5s linear infinite;
+    }
+
+    /* ─── Book button pulse glow (gold, reads against dark hero) ─── */
+    @keyframes pulse-glow-blue {
+      0%,100% { box-shadow: 0 4px 24px rgba(201,162,39,0.4); }
+      50%      { box-shadow: 0 4px 44px rgba(201,162,39,0.75), 0 0 60px rgba(201,162,39,0.3); }
+    }
+    .btn-pulse-glow { animation: pulse-glow-blue 2.4s ease-in-out infinite; }
+
+    /* ─── Film grain (used sparingly on dark/cinematic sections only) ─── */
+    .film-grain { position: relative; }
+    .film-grain::after {
+      content: ''; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      opacity: .045; mix-blend-mode: overlay;
+    }
+
+    /* ─── 3D tilt (mouse-tracked) ─── */
+    .tilt-3d { will-change: transform; transition: transform .2s ease-out; }
+
+    /* ─── Page-load wipe (signature edit-cut reveal) ─── */
+    #page-wipe {
+      position: fixed; inset: 0; z-index: 9999; background: #0b0d12;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none; animation: wipeUp .85s cubic-bezier(.76,0,.24,1) .4s forwards;
+    }
+    #page-wipe span {
+      font-family: 'Bricolage Grotesque', sans-serif; color: #c9a227; font-weight: 700;
+      letter-spacing: .35em; font-size: .8rem; text-transform: uppercase;
+      animation: wipeFade .4s ease .15s forwards;
+    }
+    @keyframes wipeUp  { 0% { transform: translateY(0); } 100% { transform: translateY(-100%); } }
+    @keyframes wipeFade{ 0% { opacity: .85; } 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      #page-wipe { display: none !important; }
+    }
+
+    /* ─── Hero ambient cursor glow ─── */
+    #hero-glow {
+      position: absolute; inset: 0; z-index: 15; pointer-events: none;
+      background: radial-gradient(620px circle at var(--mx,50%) var(--my,30%), rgba(201,162,39,.14), transparent 60%);
+    }
+
+    /* ─── Ambient orb keyframes ─── */
+    @keyframes orb1 { 0%,100%{transform:scale(1);opacity:.3} 50%{transform:scale(1.08);opacity:.45} }
+    @keyframes orb2 { 0%,100%{transform:scale(1);opacity:.2} 50%{transform:scale(1.1);opacity:.35} }
+
+    /* ─── Scroll line breathe ─── */
+    @keyframes scrollLine { 0%,100%{transform:scaleY(0.4);opacity:.3} 50%{transform:scaleY(1);opacity:.7} }
+
+    /* ─── Stats ambient drift ─── */
+    @keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-20px)} }
+    @keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-30px,25px)} }
+
+    /* ─── WhatsApp floating ping ─── */
+    @keyframes wa-ping { 0%{transform:scale(1);opacity:.75} 100%{transform:scale(2.2);opacity:0} }
+
+    /* ─── Card hover 3D lift ─── */
+    .card-3d { transition: transform .35s ease, box-shadow .35s ease; }
+    .card-3d:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 24px 48px rgba(30,23,12,.14); }
+
+    /* ─── Service card bottom bar ─── */
+    .service-bar { transform: scaleX(0); transform-origin: left; transition: transform .5s ease; }
+    .service-card:hover .service-bar { transform: scaleX(1); }
+    .service-icon { transition: transform .4s ease; }
+    .service-card:hover .service-icon { transform: scale(1.1); }
+
+    /* ─── Navbar glass on scroll ─── */
+    #navbar { transition: background .3s, box-shadow .3s, padding .3s; }
+    #navbar.scrolled { background: rgba(255,255,255,.9) !important; backdrop-filter: blur(12px); box-shadow: 0 1px 12px rgba(15,23,42,.08); padding-top:.75rem !important; padding-bottom:.75rem !important; }
+
+    /* ─── Mobile nav ─── */
+    #mobile-nav { transform: translateX(100%); transition: transform .3s ease; }
+    #mobile-nav.open { transform: translateX(0); }
+
+    /* ─── Star rating interactive ─── */
+    .star-btn { cursor: pointer; transition: transform .15s; }
+    .star-btn:hover, .star-btn.active { color: #f59e0b; }
+    .star-btn:hover { transform: scale(1.15); }
+
+    /* ─── Review form toggle ─── */
+    #review-form-wrap { max-height: 0; overflow: hidden; transition: max-height .5s ease, margin .5s ease; }
+    #review-form-wrap.open { max-height: 700px; margin-bottom: 4rem; }
+
+    /* ─── Quick inquiry popup ─── */
+    #quick-popup { display: none; opacity: 0; transform: translateY(12px) scale(.96); transition: opacity .25s ease, transform .25s ease; }
+    #quick-popup.open { display: block; opacity: 1; transform: translateY(0) scale(1); }
+
+    /* ─── Tooltip ─── */
+    .float-btn-wrap { position: relative; }
+    .float-tooltip {
+      position: absolute; right: calc(100% + 12px); top: 50%; transform: translateY(-50%);
+      background: #0f172a; color: #fff; font-size:.7rem; font-weight:600; white-space:nowrap;
+      padding:.35rem .75rem; border-radius:.5rem; pointer-events:none;
+      opacity:0; transition:opacity .2s; font-family:'Inter',sans-serif;
+    }
+    .float-tooltip::after {
+      content:''; position:absolute; left:100%; top:50%; transform:translateY(-50%);
+      border:5px solid transparent; border-left-color:#0f172a;
+    }
+    .float-btn-wrap:hover .float-tooltip { opacity:1; }
+
+    /* ─── Form focus glow ─── */
+    .form-input:focus { outline: none; border-color: #1d3a8f; box-shadow: 0 0 0 3px rgba(29,58,143,.15); }
+
+    /* ─── Appointment success ─── */
+    @keyframes checkPop { 0%{transform:scale(0)} 70%{transform:scale(1.15)} 100%{transform:scale(1)} }
+    .check-pop { animation: checkPop .5s cubic-bezier(.34,1.56,.64,1) forwards; }
+
+    /* ─── Pricing popular badge ─── */
+    .popular-badge { background: linear-gradient(90deg,#f59e0b,#d97706); }
+
+    /* ─── Portfolio video overlay ─── */
+    .video-card .overlay { transition: opacity .3s; }
+    .video-card:hover .overlay { opacity:.9 !important; }
+    .video-card .content-slide { transform: translateY(8px); transition: transform .3s; }
+    .video-card:hover .content-slide { transform: translateY(0); }
+
+    /* ─── Spinner ─── */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner { animation: spin .8s linear infinite; }
+
+    /* ─── Responsive container ─── */
+    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    @media(min-width:768px){ .container { padding: 0 2.5rem; } }
+
+    /* ─── Gold gradient for navbar brand text ─── */
+    .brand-gradient {
+      background: linear-gradient(135deg,#b8862a 0%,#e8c56a 45%,#c9a227 75%,#a67722 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── Stats grid ─── */
+    .stats-grid-line {
+      background-image:
+        linear-gradient(rgba(99,102,241,.6) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(99,102,241,.6) 1px,transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ─── Section heading accent line ─── */
+    .heading-line::before {
+      content: ''; display:inline-block; width:2rem; height:2px; background:#f59e0b;
+      vertical-align: middle; margin-right:.75rem;
+    }
+
+    /* ─── Appointment form label ─── */
+    .form-label { display:block; font-size:.8rem; font-weight:600; color:#475569; margin-bottom:.35rem; font-family:'Inter',sans-serif; }
+    .field-error { font-size:.75rem; color:#ef4444; margin-top:.25rem; display:none; font-family:'Inter',sans-serif; }
+    .field-error.visible { display:block; }
+    .input-error { border-color:#ef4444 !important; }
+
+    /* ─── WhatsApp chat button ─── */
+    .wa-chat-btn {
+      background: #25D366; color:#fff; display:flex; align-items:center; justify-content:center;
+      gap:.5rem; width:100%; padding:1rem; border-radius:.75rem; font-size:1.1rem; font-weight:700;
+      border:none; cursor:pointer; transition:background .2s,transform .2s;
+      box-shadow: 0 8px 24px rgba(37,211,102,.25);
+    }
+    .wa-chat-btn:hover { background:#20bd5a; transform:translateY(-2px); }
+  
+/* Hanging Subscriber */
+.subscriber-hang{display:flex;flex-direction:column;align-items:center;margin-bottom:50px}
+.subscriber-box{background:linear-gradient(135deg,#FFD700,#ffb300);color:#000;padding:15px 30px;border-radius:15px;font-size:24px;font-weight:700;box-shadow:0 10px 30px rgba(255,215,0,.4)}
+.chains{width:220px;display:flex;justify-content:space-between;height:80px}
+.chains span{width:3px;background:#666;display:block}
+.hanging-photo{transform-origin:top center;animation:swing 4s ease-in-out infinite}
+.hanging-photo img{width:260px;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+@keyframes swing{0%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}100%{transform:rotate(-8deg);}}
+
+</style>
+</head>
+
+<body class="bg-ivory text-slate-900">
+
+<!-- Signature load-in: a single edit-cut wipe, like a transition cut in a timeline -->
+<div id="page-wipe" aria-hidden="true"><span>PRINCE DESIGN HUB</span></div>
+
+<!-- ══════════════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════════════ -->
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 py-5" style="background:transparent;">
+  <div class="container">
+    <div class="flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#home" onclick="smoothTo(event,'#home')" class="flex items-center gap-2.5 z-50 relative">
+        <img src="Prince.png" alt="Prince Design Hub Logo" class="h-10 w-10 object-contain" loading="eager" />
+        <span class="brand-gradient font-display font-bold text-lg tracking-tight leading-none">PRINCE DESIGN HUB</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        <ul class="flex items-center gap-6">
+          <li><a href="#home"        onclick="smoothTo(event,'#home')"        class="text-sm font-medium text-slate-500 hover:text-primary transition-colors">Home</a></li>
+          <li><a href="#about"       onclick="smoothTo(event,'#about')"       class="text-sm font-medium text-slate-500 hover:text-primary transition-colors">About</a></li>
+          <li><a href="#services"    onclick="smoothTo(event,'#services')"    class="text-sm font-medium text-slate-500 hover:text-primary transition-colors">Services</a></li>
+          <li><a href="#portfolio"   onclick="smoothTo(event,'#portfolio')"   class="text-sm font-medium text-slate-500 hover:text-primary transition-colors">Portfolio</a></li>
+          <li><a href="#pricing"     onclick="smoothTo(event,'#pricing')"     class="text-sm font-medium text-slate-500 hover:text-primary transition-colors">Pricing</a></li>
+          <li><a href="#reviews"     onclick="smoothTo(event,'#reviews')"     class="text-sm font-medium text-slate-500 hover:text-primary transition-colors">Reviews</a></li>
+          <li><a href="#contact"     onclick="smoothTo(event,'#contact')"     class="text-sm font-medium text-slate-500 hover:text-primary transition-colors">Contact</a></li>
+        </ul>
+        <a href="#appointment" onclick="smoothTo(event,'#appointment')"
+           class="bg-primary text-white rounded-full px-6 py-2.5 font-semibold text-sm shadow-[0_4px_14px_rgba(29,58,143,0.35)] hover:shadow-[0_6px_20px_rgba(29,58,143,0.45)] hover:-translate-y-0.5 transition-all">
+          Book Now
+        </a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden z-50 relative p-2 text-slate-800" onclick="toggleMobileNav()" aria-label="Toggle Menu">
+        <i class="fas fa-bars text-xl" id="ham-icon"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div id="mobile-nav" class="fixed inset-0 bg-ivory z-40 flex flex-col justify-center items-center md:hidden">
+  <ul class="flex flex-col items-center gap-8 text-xl">
+    <li><a href="#home"        onclick="smoothTo(event,'#home');closeMobileNav()"        class="font-display font-medium text-slate-800 hover:text-primary transition-colors">Home</a></li>
+    <li><a href="#about"       onclick="smoothTo(event,'#about');closeMobileNav()"       class="font-display font-medium text-slate-800 hover:text-primary transition-colors">About</a></li>
+    <li><a href="#services"    onclick="smoothTo(event,'#services');closeMobileNav()"    class="font-display font-medium text-slate-800 hover:text-primary transition-colors">Services</a></li>
+    <li><a href="#portfolio"   onclick="smoothTo(event,'#portfolio');closeMobileNav()"   class="font-display font-medium text-slate-800 hover:text-primary transition-colors">Portfolio</a></li>
+    <li><a href="#pricing"     onclick="smoothTo(event,'#pricing');closeMobileNav()"     class="font-display font-medium text-slate-800 hover:text-primary transition-colors">Pricing</a></li>
+    <li><a href="#reviews"     onclick="smoothTo(event,'#reviews');closeMobileNav()"     class="font-display font-medium text-slate-800 hover:text-primary transition-colors">Reviews</a></li>
+    <li><a href="#contact"     onclick="smoothTo(event,'#contact');closeMobileNav()"     class="font-display font-medium text-slate-800 hover:text-primary transition-colors">Contact</a></li>
+    <li>
+      <a href="#appointment" onclick="smoothTo(event,'#appointment');closeMobileNav()"
+         class="bg-primary text-white rounded-full px-8 py-3 font-bold mt-4 inline-block">
+        Book Appointment
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════ -->
+<section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-black film-grain">
+
+  <!-- Background image -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 z-10" style="background:linear-gradient(to bottom,rgba(0,0,0,.65) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.90) 100%)"></div>
+    <img src="assets/prince-hero.jpg" alt="Cinematic Workstation" class="w-full h-full object-cover opacity-80 scale-105" style="will-change:transform;" loading="eager" />
+  </div>
+
+  <!-- Ambient orbs -->
+  <div class="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+    <div style="position:absolute;top:25%;left:25%;width:32rem;height:32rem;background:rgba(37,99,235,.25);border-radius:50%;filter:blur(140px);animation:orb1 7s ease-in-out infinite;"></div>
+    <div style="position:absolute;top:50%;right:25%;width:26rem;height:26rem;background:rgba(245,158,11,.2);border-radius:50%;filter:blur(120px);animation:orb2 9s ease-in-out 1.5s infinite;"></div>
+  </div>
+
+  <!-- Cursor-tracked gold glow -->
+  <div id="hero-glow"></div>
+
+  <!-- Content -->
+  <div class="container relative z-20 text-center">
+    <div class="max-w-5xl mx-auto" id="hero-content">
+
+      <!-- Badge -->
+      <div class="inline-block mb-8" data-aos="fade-down" data-aos-delay="100">
+        <span class="inline-block px-5 py-2 rounded-full border border-white/20 text-white/90 text-xs font-semibold tracking-[0.3em] uppercase" style="background:rgba(255,255,255,.1);backdrop-filter:blur(12px);">
+          Premium Creative Agency
+        </span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-display font-bold text-white mb-5 leading-[0.98] tracking-tight" style="font-size:clamp(2.75rem,8.5vw,6.75rem);" data-aos="fade-up" data-aos-delay="200">
+        Transforming Ideas Into
+        <span class="text-shimmer-gold block mt-1">Viral Visual Content</span>
+      </h1>
+
+      <!-- Sub -->
+      <p class="text-gray-300/90 mb-10 max-w-2xl mx-auto font-light leading-relaxed tracking-wide" style="font-size:clamp(1rem,2.5vw,1.2rem);" data-aos="fade-up" data-aos-delay="320">
+        Professional video editing, graphic design, and branding for influencers, creators, and businesses worldwide.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4" data-aos="fade-up" data-aos-delay="440">
+        <a href="#appointment" onclick="smoothTo(event,'#appointment')"
+           class="btn-pulse-glow w-full sm:w-auto inline-flex items-center justify-center h-14 px-10 bg-gold text-slate-900 rounded-full font-bold text-lg transition-transform hover:-translate-y-1">
+          Book Appointment
+        </a>
+        <a href="#portfolio" onclick="smoothTo(event,'#portfolio')"
+           class="w-full sm:w-auto inline-flex items-center justify-center h-14 px-10 rounded-full font-semibold text-lg text-white border border-white/25 transition-transform hover:-translate-y-1"
+           style="background:rgba(255,255,255,.08);backdrop-filter:blur(8px);">
+          View Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 cursor-pointer" onclick="smoothTo(event,'#stats')">
+    <span class="text-white/40 text-[10px] uppercase tracking-[0.25em] font-medium">Scroll</span>
+    <div style="width:1px;height:2.5rem;background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);animation:scrollLine 1.8s ease-in-out infinite;"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     STATS
+══════════════════════════════════════════════════════ -->
+<section id="stats" class="relative overflow-hidden py-20 film-grain" style="background:linear-gradient(135deg,#0a0f2e 0%,#0d1117 40%,#12022f 100%);">
+
+  <!-- Grid pattern -->
+  <div class="absolute inset-0 pointer-events-none stats-grid-line" style="opacity:.07;"></div>
+
+  <!-- Drift orbs -->
+  <div style="position:absolute;top:0;left:25%;width:28rem;height:28rem;background:rgba(59,130,246,.15);border-radius:50%;filter:blur(120px);animation:drift1 18s ease-in-out infinite;pointer-events:none;"></div>
+  <div style="position:absolute;bottom:0;right:25%;width:22rem;height:22rem;background:rgba(168,85,247,.12);border-radius:50%;filter:blur(100px);animation:drift2 22s ease-in-out 4s infinite;pointer-events:none;"></div>
+
+  <div class="container relative z-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6" id="stats-grid">
+
+      <div class="relative flex flex-col items-center text-center stat-card" data-target="2" data-suffix="+" data-aos="fade-up" data-aos-delay="0">
+        <div style="position:absolute;inset:0;top:-1rem;display:flex;align-items:flex-start;justify-content:center;pointer-events:none;">
+          <div style="width:8rem;height:8rem;border-radius:50%;background:rgba(59,130,246,.1);filter:blur(2rem);"></div>
+        </div>
+        <div class="relative text-5xl md:text-6xl font-bold font-display text-white mb-2 tabular-nums">
+          <span class="stat-num text-amber-400">0</span><span class="text-amber-400">+</span>
+        </div>
+        <p class="text-white font-semibold text-base mb-1">Years Experience</p>
+        <p class="text-white/45 text-sm">Crafting world-class visuals</p>
+      </div>
+
+      <div class="relative flex flex-col items-center text-center stat-card" data-target="500" data-suffix="+" data-aos="fade-up" data-aos-delay="120">
+        <div style="position:absolute;inset:0;top:-1rem;display:flex;align-items:flex-start;justify-content:center;pointer-events:none;">
+          <div style="width:8rem;height:8rem;border-radius:50%;background:rgba(59,130,246,.1);filter:blur(2rem);"></div>
+        </div>
+        <div class="relative text-5xl md:text-6xl font-bold font-display text-white mb-2 tabular-nums">
+          <span class="stat-num text-amber-400">0</span><span class="text-amber-400">+</span>
+        </div>
+        <p class="text-white font-semibold text-base mb-1">Projects Delivered</p>
+        <p class="text-white/45 text-sm">Across reels, videos &amp; designs</p>
+      </div>
+
+      <div class="relative flex flex-col items-center text-center stat-card" data-target="100" data-suffix="+" data-aos="fade-up" data-aos-delay="240">
+        <div style="position:absolute;inset:0;top:-1rem;display:flex;align-items:flex-start;justify-content:center;pointer-events:none;">
+          <div style="width:8rem;height:8rem;border-radius:50%;background:rgba(59,130,246,.1);filter:blur(2rem);"></div>
+        </div>
+        <div class="relative text-5xl md:text-6xl font-bold font-display text-white mb-2 tabular-nums">
+          <span class="stat-num text-amber-400">0</span><span class="text-amber-400">+</span>
+        </div>
+        <p class="text-white font-semibold text-base mb-1">Happy Clients</p>
+        <p class="text-white/45 text-sm">Creators, brands &amp; businesses</p>
+      </div>
+
+      <div class="relative flex flex-col items-center text-center stat-card" data-target="50" data-suffix="+" data-aos="fade-up" data-aos-delay="360">
+        <div style="position:absolute;inset:0;top:-1rem;display:flex;align-items:flex-start;justify-content:center;pointer-events:none;">
+          <div style="width:8rem;height:8rem;border-radius:50%;background:rgba(59,130,246,.1);filter:blur(2rem);"></div>
+        </div>
+        <div class="relative text-5xl md:text-6xl font-bold font-display text-white mb-2 tabular-nums">
+          <span class="stat-num text-amber-400">0</span><span class="text-amber-400">+</span>
+        </div>
+        <p class="text-white font-semibold text-base mb-1">Clients Reached</p>
+        <p class="text-white/45 text-sm">Trusted clients worldwide</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════════════════ -->
+<section id="about" class="py-24 md:py-32 bg-ivory relative overflow-hidden">
+  <div class="container">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      
+<div class="subscriber-hang">
+<div class="subscriber-box"><i class="fab fa-youtube"></i> 2,000+ Subscribers</div>
+<div class="chains"><span></span><span></span></div>
+<div class="hanging-photo"><img src="assets/youtube-subscriber.jpg" alt="Subscribers"></div>
+</div>
+
+<!-- Image col -->
+      <div class="relative" data-aos="fade-right">
+        <div class="tilt-3d tilt-strong aspect-[4/5] rounded-2xl overflow-hidden relative z-10 shadow-2xl">
+          <img src="assets/prince-founder.jpg" alt="Prince Patel - Founder of Prince Design Hub" class="w-full h-full object-cover" loading="lazy" decoding="async" />
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,.4),transparent)"></div>
+        </div>
+        <div class="absolute -top-6 -left-6 w-32 h-32 rounded-full blur-2xl z-0" style="background:rgba(29,58,143,.1)"></div>
+        <div class="absolute -bottom-6 -right-6 w-40 h-40 rounded-full blur-3xl z-0" style="background:rgba(245,158,11,.2)"></div>
+        <div class="absolute top-1/2 -right-8 -translate-y-1/2 w-16 h-64 border border-primary/20 rounded-full z-0 hidden md:block"></div>
+      </div>
+
+      <!-- Text col -->
+      <div class="flex flex-col justify-center" data-aos="fade-left" data-aos-delay="150">
+        <div class="inline-flex items-center gap-2 mb-4">
+          <div class="h-px w-8 bg-amber-500"></div>
+          <span class="text-amber-600 font-semibold tracking-wider text-sm uppercase">About The Founder</span>
+        </div>
+
+        <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+          Crafting Digital<br/>
+          <span class="text-primary italic">Masterpieces</span>
+        </h2>
+
+        <p class="text-lg text-slate-600 mb-6 font-light leading-relaxed">
+          Founded by Prince Patel, Prince Design Hub is a premier creative agency dedicated to elevating brands in the digital space. With over two years of intensive industry experience, we have mastered the art of visual storytelling.
+        </p>
+        <p class="text-lg text-slate-600 mb-10 font-light leading-relaxed">
+          We specialize in high-end video editing, striking graphic design, and strategic social media management. Our mission is to transform raw ideas into viral, scroll-stopping content that drives real engagement and growth for creators and businesses worldwide.
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-slate-100">
+          <div class="flex flex-col">
+            <span class="text-3xl font-serif font-bold text-slate-900 mb-1">2+</span>
+            <span class="text-xs text-slate-500 font-medium uppercase tracking-wider">Years Experience</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-3xl font-serif font-bold text-slate-900 mb-1">500+</span>
+            <span class="text-xs text-slate-500 font-medium uppercase tracking-wider">Projects Delivered</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-3xl font-serif font-bold text-slate-900 mb-1">100+</span>
+            <span class="text-xs text-slate-500 font-medium uppercase tracking-wider">Happy Clients</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-3xl font-serif font-bold text-slate-900 mb-1">Global</span>
+            <span class="text-xs text-slate-500 font-medium uppercase tracking-wider">Worldwide Service</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     SERVICES
+══════════════════════════════════════════════════════ -->
+<section id="services" class="py-24 md:py-32 bg-slate-50 relative">
+  <div class="container">
+
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-24" data-aos="fade-up">
+      <span class="text-primary font-semibold tracking-wider text-sm uppercase mb-4 block">Our Expertise</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6">Premium Creative Services</h2>
+      <p class="text-lg text-slate-600 font-light">End-to-end visual solutions designed to elevate your brand identity and maximize audience engagement across all platforms.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Video Editing -->
+      <div class="service-card tilt-3d group relative bg-white rounded-2xl p-8 shadow-sm border border-slate-100 overflow-hidden card-3d" data-aos="fade-up" data-aos-delay="100">
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:linear-gradient(135deg,rgba(29,58,143,.05),transparent)"></div>
+        <div class="service-icon w-20 h-20 rounded-2xl bg-blue-50 flex items-center justify-center mb-8 relative z-10">
+          <i class="fas fa-film text-primary text-3xl"></i>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-slate-900 mb-4 relative z-10">Video Editing</h3>
+        <p class="text-slate-600 leading-relaxed font-light relative z-10">Reels, YouTube, Shorts, Cinematic, Promotional, and Business Videos crafted with precision and pacing.</p>
+        <ul class="mt-4 space-y-1 relative z-10">
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Reels &amp; Shorts Editing</li>
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> YouTube Video Editing</li>
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Cinematic &amp; Promotional</li>
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Business Videos</li>
+        </ul>
+        <div class="service-bar absolute bottom-0 left-0 w-full h-1" style="background:linear-gradient(to right,#1d3a8f,#f59e0b)"></div>
+      </div>
+
+      <!-- Graphic Design -->
+      <div class="service-card tilt-3d group relative bg-white rounded-2xl p-8 shadow-sm border border-slate-100 overflow-hidden card-3d" data-aos="fade-up" data-aos-delay="200">
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:linear-gradient(135deg,rgba(29,58,143,.05),transparent)"></div>
+        <div class="service-icon w-20 h-20 rounded-2xl bg-blue-50 flex items-center justify-center mb-8 relative z-10">
+          <i class="fas fa-palette text-primary text-3xl"></i>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-slate-900 mb-4 relative z-10">Graphic Design</h3>
+        <p class="text-slate-600 leading-relaxed font-light relative z-10">Social Media Posts, Thumbnails, Posters, Banners, Branding, and Marketing Creatives that demand attention.</p>
+        <ul class="mt-4 space-y-1 relative z-10">
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Thumbnails &amp; Posters</li>
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Social Media Posts</li>
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Banners &amp; Branding</li>
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Marketing Creatives</li>
+        </ul>
+        <div class="service-bar absolute bottom-0 left-0 w-full h-1" style="background:linear-gradient(to right,#1d3a8f,#f59e0b)"></div>
+      </div>
+
+      <!-- Social Media Management -->
+      <div class="service-card tilt-3d group relative bg-white rounded-2xl p-8 shadow-sm border border-slate-100 overflow-hidden card-3d" data-aos="fade-up" data-aos-delay="300">
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background:linear-gradient(135deg,rgba(29,58,143,.05),transparent)"></div>
+        <div class="service-icon w-20 h-20 rounded-2xl bg-blue-50 flex items-center justify-center mb-8 relative z-10">
+          <i class="fas fa-mobile-alt text-primary text-3xl"></i>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-slate-900 mb-4 relative z-10">Social Media Management</h3>
+        <p class="text-slate-600 leading-relaxed font-light relative z-10">Content Planning, Page Management, Branding Strategy, and Growth Support to scale your digital presence.</p>
+        <ul class="mt-4 space-y-1 relative z-10">
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Content Planning</li>
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Page Management</li>
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Branding Strategy</li>
+          <li class="text-sm text-slate-500 flex items-center gap-2"><i class="fas fa-check text-primary text-xs"></i> Growth Support</li>
+        </ul>
+        <div class="service-bar absolute bottom-0 left-0 w-full h-1" style="background:linear-gradient(to right,#1d3a8f,#f59e0b)"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     PORTFOLIO
+══════════════════════════════════════════════════════ -->
+<section id="portfolio" class="py-24 md:py-32 bg-slate-900 text-white relative film-grain">
+  <div class="container">
+
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-24" data-aos="fade-up">
+      <span class="text-amber-500 font-semibold tracking-wider text-sm uppercase mb-4 block">Selected Works</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Our Portfolio</h2>
+      <p class="text-lg text-slate-400 font-light">Explore a curated selection of our finest visual productions, designed to captivate and convert.</p>
+    </div>
+
+    <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+
+      <!-- Video 1 -->
+      <div class="video-card break-inside-avoid relative rounded-2xl overflow-hidden bg-slate-800 cursor-pointer" data-aos="fade-up" data-aos-delay="50" onclick="toggleVideo(this)">
+        <div class="relative" style="aspect-ratio:9/16;">
+          <video src="assets/video1.mp4" class="w-full h-full object-cover" loop playsinline></video>
+          <div class="overlay absolute inset-0 opacity-100" style="background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 50%,transparent 100%);">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="play-btn w-16 h-16 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white hover:text-black" style="background:rgba(255,255,255,.2);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);">
+                <i class="fas fa-play ml-1 text-xl"></i>
+              </div>
+            </div>
+            <div class="content-slide absolute bottom-0 left-0 w-full p-6">
+              <span class="text-amber-400 text-xs font-semibold tracking-wider uppercase block mb-2">Video Editing</span>
+              <h3 class="text-xl font-serif font-bold text-white">Cinematic Reel Edit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card break-inside-avoid relative rounded-2xl overflow-hidden bg-slate-800 cursor-pointer" data-aos="fade-up" data-aos-delay="100" onclick="toggleVideo(this)">
+        <div class="relative" style="aspect-ratio:9/16;">
+          <video src="assets/video2.mp4" class="w-full h-full object-cover" loop playsinline></video>
+          <div class="overlay absolute inset-0 opacity-100" style="background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 50%,transparent 100%);">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="play-btn w-16 h-16 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white hover:text-black" style="background:rgba(255,255,255,.2);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);">
+                <i class="fas fa-play ml-1 text-xl"></i>
+              </div>
+            </div>
+            <div class="content-slide absolute bottom-0 left-0 w-full p-6">
+              <span class="text-amber-400 text-xs font-semibold tracking-wider uppercase block mb-2">Social Media</span>
+              <h3 class="text-xl font-serif font-bold text-white">Promotional Content</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card break-inside-avoid relative rounded-2xl overflow-hidden bg-slate-800 cursor-pointer" data-aos="fade-up" data-aos-delay="150" onclick="toggleVideo(this)">
+        <div class="relative" style="aspect-ratio:9/16;">
+          <video src="assets/video3.mp4" class="w-full h-full object-cover" loop playsinline></video>
+          <div class="overlay absolute inset-0 opacity-100" style="background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 50%,transparent 100%);">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="play-btn w-16 h-16 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white hover:text-black" style="background:rgba(255,255,255,.2);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);">
+                <i class="fas fa-play ml-1 text-xl"></i>
+              </div>
+            </div>
+            <div class="content-slide absolute bottom-0 left-0 w-full p-6">
+              <span class="text-amber-400 text-xs font-semibold tracking-wider uppercase block mb-2">Branding</span>
+              <h3 class="text-xl font-serif font-bold text-white">Brand Story</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="video-card break-inside-avoid relative rounded-2xl overflow-hidden bg-slate-800 cursor-pointer" data-aos="fade-up" data-aos-delay="200" onclick="toggleVideo(this)">
+        <div class="relative" style="aspect-ratio:9/16;">
+          <video src="assets/video4.mp4" class="w-full h-full object-cover" loop playsinline></video>
+          <div class="overlay absolute inset-0 opacity-100" style="background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 50%,transparent 100%);">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="play-btn w-16 h-16 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white hover:text-black" style="background:rgba(255,255,255,.2);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);">
+                <i class="fas fa-play ml-1 text-xl"></i>
+              </div>
+            </div>
+            <div class="content-slide absolute bottom-0 left-0 w-full p-6">
+              <span class="text-amber-400 text-xs font-semibold tracking-wider uppercase block mb-2">Video Editing</span>
+              <h3 class="text-xl font-serif font-bold text-white">Event Highlights</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 5 -->
+      <div class="video-card break-inside-avoid relative rounded-2xl overflow-hidden bg-slate-800 cursor-pointer" data-aos="fade-up" data-aos-delay="250" onclick="toggleVideo(this)">
+        <div class="relative" style="aspect-ratio:9/16;">
+          <video src="assets/video5.mp4" class="w-full h-full object-cover" loop playsinline></video>
+          <div class="overlay absolute inset-0 opacity-100" style="background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 50%,transparent 100%);">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="play-btn w-16 h-16 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white hover:text-black" style="background:rgba(255,255,255,.2);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.3);">
+                <i class="fas fa-play ml-1 text-xl"></i>
+              </div>
+            </div>
+            <div class="content-slide absolute bottom-0 left-0 w-full p-6">
+              <span class="text-amber-400 text-xs font-semibold tracking-wider uppercase block mb-2">Commercial</span>
+              <h3 class="text-xl font-serif font-bold text-white">Product Showcase</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     PRICING
+══════════════════════════════════════════════════════ -->
+<section id="pricing" class="py-24 md:py-32 bg-ivory relative">
+  <div class="container">
+
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-24" data-aos="fade-up">
+      <span class="text-primary font-semibold tracking-wider text-sm uppercase mb-4 block">Investment</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6">Transparent Pricing</h2>
+      <p class="text-lg text-slate-600 font-light">Premium quality editing at competitive rates. Choose a package that fits your content strategy.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+      <!-- Plan 1 -->
+      <div class="relative rounded-3xl p-8 md:p-10 border border-slate-200 bg-white text-slate-900 shadow-lg card-3d" data-aos="fade-up" data-aos-delay="100">
+        <div class="mb-8">
+          <h3 class="text-2xl font-serif font-bold text-slate-900 mb-4">15 Second Reel Edit</h3>
+          <div class="flex items-baseline gap-2 mb-4">
+            <span class="text-3xl font-medium">&#8377;</span>
+            <span class="text-6xl font-bold tracking-tighter text-slate-900">250</span>
+          </div>
+          <p class="text-slate-500">Perfect for quick, engaging short-form content.</p>
+        </div>
+        <ul class="space-y-4 mb-10">
+          <li class="flex items-start gap-3"><i class="fas fa-check text-primary mt-0.5 shrink-0"></i><span class="text-slate-600">Professional color grading</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-primary mt-0.5 shrink-0"></i><span class="text-slate-600">Engaging transitions</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-primary mt-0.5 shrink-0"></i><span class="text-slate-600">Trendy background music</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-primary mt-0.5 shrink-0"></i><span class="text-slate-600">Dynamic captions</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-primary mt-0.5 shrink-0"></i><span class="text-slate-600">1 Revision</span></li>
+        </ul>
+        <button onclick="bookPackage('15 Second Reel Edit')"
+          class="w-full h-14 rounded-full font-semibold text-lg transition-all bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-200">
+          Get Started
+        </button>
+      </div>
+
+      <!-- Plan 2 — Popular -->
+      <div class="relative rounded-3xl p-8 md:p-10 bg-slate-900 text-white shadow-2xl card-3d scale-100 md:scale-105 z-10" data-aos="fade-up" data-aos-delay="200">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 popular-badge text-slate-900 text-xs font-bold uppercase tracking-widest py-1.5 px-4 rounded-full">
+          Most Popular
+        </div>
+        <div class="mb-8">
+          <h3 class="text-2xl font-serif font-bold text-white mb-4">30 Second Reel Edit</h3>
+          <div class="flex items-baseline gap-2 mb-4">
+            <span class="text-3xl font-medium text-white">&#8377;</span>
+            <span class="text-6xl font-bold tracking-tighter text-white">400</span>
+          </div>
+          <p class="text-slate-400">Ideal for storytelling and detailed content delivery.</p>
+        </div>
+        <ul class="space-y-4 mb-10">
+          <li class="flex items-start gap-3"><i class="fas fa-check text-amber-400 mt-0.5 shrink-0"></i><span class="text-slate-300">Premium color grading</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-amber-400 mt-0.5 shrink-0"></i><span class="text-slate-300">Advanced VFX &amp; transitions</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-amber-400 mt-0.5 shrink-0"></i><span class="text-slate-300">Sound design &amp; mixing</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-amber-400 mt-0.5 shrink-0"></i><span class="text-slate-300">Custom typography/captions</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-amber-400 mt-0.5 shrink-0"></i><span class="text-slate-300">High-retention editing style</span></li>
+          <li class="flex items-start gap-3"><i class="fas fa-check text-amber-400 mt-0.5 shrink-0"></i><span class="text-slate-300">2 Revisions</span></li>
+        </ul>
+        <button onclick="bookPackage('30 Second Reel Edit')"
+          class="w-full h-14 rounded-full font-semibold text-lg transition-all bg-primary hover:bg-primary-dark text-white">
+          Get Started
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Custom quote -->
+    <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="300">
+      <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100 max-w-2xl mx-auto w-full justify-between">
+        <div class="text-left">
+          <h4 class="text-lg font-bold text-slate-900">Need a Custom Quote?</h4>
+          <p class="text-slate-600 text-sm">For bulk orders, YouTube videos, or graphic design.</p>
+        </div>
+        <button onclick="bookPackage('Custom Quote')"
+          class="shrink-0 rounded-full border border-primary text-primary hover:bg-primary hover:text-white px-6 py-2.5 font-semibold transition-all flex items-center gap-2">
+          Contact Us <i class="fas fa-arrow-right text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     WHY CHOOSE US
+══════════════════════════════════════════════════════ -->
+<section class="py-24 bg-ivory border-t border-slate-100">
+  <div class="container">
+    <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">Why Choose Prince Design Hub?</h2>
+      <p class="text-lg text-slate-600 font-light">The advantages of partnering with a premium creative agency.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center card-3d" data-aos="fade-up" data-aos-delay="50">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center mb-4"><i class="fas fa-wallet text-lg"></i></div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Affordable Pricing</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Premium quality that fits your budget.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center card-3d" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center mb-4"><i class="fas fa-star text-lg"></i></div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Professional Quality</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Cinematic, high-end output for every project.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center card-3d" data-aos="fade-up" data-aos-delay="150">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center mb-4"><i class="fas fa-bolt text-lg"></i></div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Fast Delivery</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Quick turnaround without compromising quality.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center card-3d" data-aos="fade-up" data-aos-delay="200">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center mb-4"><i class="fas fa-users text-lg"></i></div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Team Support</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Dedicated creative team for your brand.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center card-3d" data-aos="fade-up" data-aos-delay="250">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center mb-4"><i class="fas fa-paint-brush text-lg"></i></div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Creative Style</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Unique, trend-setting editing approaches.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center card-3d" data-aos="fade-up" data-aos-delay="300">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center mb-4"><i class="fas fa-chart-line text-lg"></i></div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Growth Focus</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Content optimized for maximum engagement.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center card-3d" data-aos="fade-up" data-aos-delay="350">
+        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center mb-4"><i class="fas fa-globe text-lg"></i></div>
+        <h3 class="text-lg font-bold text-slate-900 mb-2">Worldwide Service</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Serving clients across the globe.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     REVIEWS
+══════════════════════════════════════════════════════ -->
+<section id="reviews" class="py-24 md:py-32 bg-slate-900 text-white relative film-grain">
+  <div class="container">
+
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 md:mb-24 gap-6">
+      <div class="max-w-2xl" data-aos="fade-right">
+        <span class="text-amber-500 font-semibold tracking-wider text-sm uppercase mb-4 block">Client Testimonials</span>
+        <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-4">What Creators Say</h2>
+        <p class="text-lg text-slate-400 font-light">Don't just take our word for it. Here's what our clients have to say about working with Prince Design Hub.</p>
+      </div>
+      <div data-aos="fade-left">
+        <button onclick="toggleReviewForm()" id="review-toggle-btn"
+          class="bg-primary hover:bg-primary-dark text-white rounded-full px-8 h-12 font-medium transition-colors">
+          Leave a Review
+        </button>
+      </div>
+    </div>
+
+    <!-- Review Form -->
+    <div id="review-form-wrap">
+      <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 max-w-2xl mx-auto">
+        <h3 class="text-2xl font-serif font-bold mb-6 text-white">Share Your Experience</h3>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Rating</label>
+            <div class="flex gap-2" id="star-rating">
+              <button type="button" class="star-btn active text-amber-400 text-3xl focus:outline-none" data-val="1" onclick="setRating(1)">&#9733;</button>
+              <button type="button" class="star-btn active text-amber-400 text-3xl focus:outline-none" data-val="2" onclick="setRating(2)">&#9733;</button>
+              <button type="button" class="star-btn active text-amber-400 text-3xl focus:outline-none" data-val="3" onclick="setRating(3)">&#9733;</button>
+              <button type="button" class="star-btn active text-amber-400 text-3xl focus:outline-none" data-val="4" onclick="setRating(4)">&#9733;</button>
+              <button type="button" class="star-btn active text-amber-400 text-3xl focus:outline-none" data-val="5" onclick="setRating(5)">&#9733;</button>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+            <input id="review-name" type="text" placeholder="Your name" required
+              class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg px-4 py-3 form-input" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Review</label>
+            <textarea id="review-text" rows="4" placeholder="Tell us about your project..."
+              class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg px-4 py-3 form-input resize-none"></textarea>
+          </div>
+          <button onclick="submitReview()" id="submit-review-btn"
+            class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 h-12 rounded-xl font-bold transition-colors">
+            Submit Review
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="reviews-grid"></div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     APPOINTMENT
+══════════════════════════════════════════════════════ -->
+<section id="appointment" class="py-24 md:py-32 bg-ivory relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-1/2 h-full -skew-x-12 origin-top" style="background:rgba(29,58,143,.05);"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background:rgba(245,158,11,.1);"></div>
+
+  <div class="container relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+
+      <!-- Info col -->
+      <div data-aos="fade-right">
+        <span class="text-primary font-semibold tracking-wider text-sm uppercase mb-4 block">Book A Consultation</span>
+        <h2 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+          Ready to create something <span class="text-primary italic">extraordinary?</span>
+        </h2>
+        <p class="text-lg text-slate-600 mb-8 font-light leading-relaxed">
+          Fill out the form to schedule a consultation. We'll discuss your vision, goals, and how we can bring your ideas to life.
+        </p>
+        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm inline-block">
+          <h4 class="font-bold text-slate-900 mb-2">Next Steps</h4>
+          <ul class="space-y-3 text-sm text-slate-600">
+            <li class="flex items-center gap-2">
+              <div class="w-6 h-6 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-xs shrink-0">1</div>
+              Submit your details
+            </li>
+            <li class="flex items-center gap-2">
+              <div class="w-6 h-6 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-xs shrink-0">2</div>
+              You'll be redirected to WhatsApp
+            </li>
+            <li class="flex items-center gap-2">
+              <div class="w-6 h-6 rounded-full bg-blue-50 text-primary flex items-center justify-center font-bold text-xs shrink-0">3</div>
+              Send files and discuss pricing
+            </li>
+          </ul>
+          <p class="mt-4 text-xs text-slate-500 italic bg-slate-50 p-3 rounded-lg border border-slate-100">
+            Note: You can send your video/photo files directly on WhatsApp after booking.
+          </p>
+        </div>
+      </div>
+
+      <!-- Form col -->
+      <div data-aos="fade-up" data-aos-delay="200">
+        <div class="rounded-3xl p-8 md:p-10 border border-white shadow-xl" style="background:rgba(255,255,255,.85);backdrop-filter:blur(20px);">
+
+          <!-- Success state -->
+          <div id="appt-success" style="display:none;" class="text-center py-16">
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 check-pop">
+              <i class="fas fa-check text-4xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-2">Booking Initiated!</h3>
+            <p class="text-slate-600">Redirecting to WhatsApp to complete your request...</p>
+          </div>
+
+          <!-- Form -->
+          <form id="appt-form" onsubmit="submitAppointment(event)" class="space-y-5" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="form-label" for="appt-name">Full Name *</label>
+                <input id="appt-name" type="text" placeholder="John Doe" class="w-full bg-slate-50/50 border border-slate-200 rounded-lg px-4 py-3 form-input text-slate-900" />
+                <p class="field-error" id="err-name">Name must be at least 2 characters.</p>
+              </div>
+              <div>
+                <label class="form-label" for="appt-phone">Phone Number *</label>
+                <input id="appt-phone" type="tel" placeholder="9054215316" class="w-full bg-slate-50/50 border border-slate-200 rounded-lg px-4 py-3 form-input text-slate-900" maxlength="10" />
+                <p class="field-error" id="err-phone">Phone must be exactly 10 digits.</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="form-label" for="appt-email">Email (Optional)</label>
+                <input id="appt-email" type="email" placeholder="john@example.com" class="w-full bg-slate-50/50 border border-slate-200 rounded-lg px-4 py-3 form-input text-slate-900" />
+                <p class="field-error" id="err-email">Enter a valid email address.</p>
+              </div>
+              <div>
+                <label class="form-label" for="appt-service">Service Type *</label>
+                <select id="appt-service" class="w-full bg-slate-50/50 border border-slate-200 rounded-lg px-4 py-3 form-input text-slate-900 appearance-none">
+                  <option value="">Select service...</option>
+                  <option value="Video Editing">Video Editing</option>
+                  <option value="Graphic Design">Graphic Design</option>
+                  <option value="Social Media Management">Social Media Management</option>
+                  <option value="Other">Other</option>
+                </select>
+                <p class="field-error" id="err-service">Please select a service.</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="form-label" for="appt-date">Preferred Date *</label>
+                <input id="appt-date" type="date" class="w-full bg-slate-50/50 border border-slate-200 rounded-lg px-4 py-3 form-input text-slate-900" />
+                <p class="field-error" id="err-date">Please select a future date.</p>
+              </div>
+              <div>
+                <label class="form-label" for="appt-time">Preferred Time (Optional)</label>
+                <select id="appt-time" class="w-full bg-slate-50/50 border border-slate-200 rounded-lg px-4 py-3 form-input text-slate-900 appearance-none">
+                  <option value="">Select time...</option>
+                  <option value="Morning (9AM - 12PM)">Morning (9AM - 12PM)</option>
+                  <option value="Afternoon (12PM - 4PM)">Afternoon (12PM - 4PM)</option>
+                  <option value="Evening (4PM - 8PM)">Evening (4PM - 8PM)</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="form-label" for="appt-details">Project Details *</label>
+              <textarea id="appt-details" rows="4" placeholder="Tell us about what you want to create..." class="w-full bg-slate-50/50 border border-slate-200 rounded-lg px-4 py-3 form-input text-slate-900 resize-none"></textarea>
+              <p class="field-error" id="err-details">Please provide more details (min 10 characters).</p>
+            </div>
+            <button type="submit" id="appt-submit"
+              class="w-full h-14 rounded-xl text-lg font-bold bg-primary hover:bg-primary-dark text-white shadow-lg transition-all flex items-center justify-center gap-2">
+              <span id="appt-btn-text">Book Appointment on WhatsApp</span>
+              <i class="fas fa-circle-notch spinner hidden" id="appt-spinner"></i>
+            </button>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════════════════ -->
+<section id="contact" class="py-24 md:py-32 bg-slate-900 relative overflow-hidden film-grain">
+  <div class="container relative z-10">
+
+    <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+      <span class="text-amber-500 font-semibold tracking-wider text-sm uppercase mb-4 block">Get In Touch</span>
+      <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Let's Talk About Your Next Project</h2>
+      <p class="text-lg text-slate-400 font-light">Whether you need a full branding package or a quick reel edit, we're here to help.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-24 max-w-5xl mx-auto">
+
+      <!-- Contact info -->
+      <div data-aos="fade-right">
+        <div class="p-8 rounded-3xl border border-slate-700/50" style="background:rgba(30,41,59,.5);">
+          <h3 class="text-2xl font-serif font-bold text-white mb-8">Contact Information</h3>
+          <div class="space-y-6">
+            <a href="tel:+919054215316" class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group">
+              <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <p class="text-sm text-slate-500">Phone</p>
+                <p class="font-medium text-lg">+91 90542 15316</p>
+              </div>
+            </a>
+            <a href="mailto:mrprince742009@gmail.com" class="flex items-center gap-4 text-slate-300 hover:text-white transition-colors group">
+              <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors shrink-0">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <p class="text-sm text-slate-500">Email</p>
+                <p class="font-medium text-lg">mrprince742009@gmail.com</p>
+              </div>
+            </a>
+            <div class="flex items-center gap-4 text-slate-300">
+              <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-primary shrink-0">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <p class="text-sm text-slate-500">Location</p>
+                <p class="font-medium text-lg">Worldwide Service</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 pt-8 border-t border-slate-700/50">
+            <h4 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-6">Follow Us</h4>
+            <div class="flex gap-4">
+              <a href="https://www.instagram.com/___.prince.ptel.___?igsh=anQ4eTdiMjE0NjVi" target="_blank" rel="noopener noreferrer"
+                class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-white hover:text-white transition-all duration-300"
+                style="transition:background .3s;" onmouseover="this.style.background='linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7)'" onmouseout="this.style.background='#334155'">
+                <i class="fab fa-instagram text-lg"></i>
+              </a>
+              <a href="https://youtube.com/@jayveerjetalvasanaofficial5536?si=JVD3QS48WP9htw-v" target="_blank" rel="noopener noreferrer"
+                class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-white hover:bg-red-600 transition-all duration-300">
+                <i class="fab fa-youtube text-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp CTA -->
+      <div class="flex flex-col justify-center" data-aos="fade-left" data-aos-delay="150">
+        <div class="p-8 md:p-10 rounded-3xl border border-slate-700 shadow-2xl relative overflow-hidden bg-slate-800">
+          <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image:radial-gradient(circle at 2px 2px,white 1px,transparent 0);background-size:24px 24px;"></div>
+          <div class="relative z-10">
+            <h3 class="text-2xl font-serif font-bold text-white mb-4">Fast Response</h3>
+            <p class="text-slate-400 mb-8">Click below to connect with us instantly on WhatsApp. We typically reply within a few hours.</p>
+            <button onclick="window.open('https://wa.me/919054215316','_blank')" class="wa-chat-btn">
+              <i class="fab fa-whatsapp text-2xl"></i>
+              Chat on WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════ -->
+<footer class="bg-black text-white pt-20 pb-10 border-t border-slate-800 relative film-grain">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+      <div class="lg:col-span-2">
+        <a href="#home" onclick="smoothTo(event,'#home')" class="flex items-center gap-3 mb-6">
+          <img src="Prince.png" alt="Prince Design Hub Logo" class="h-12 w-12 object-contain" />
+          <span class="font-serif font-bold text-2xl tracking-wide text-white">PRINCE DESIGN HUB</span>
+        </a>
+        <p class="text-slate-400 font-light text-lg mb-6 max-w-md">Transforming Ideas Into Viral Visual Content</p>
+        <p class="text-slate-500 font-light text-sm max-w-md leading-relaxed">
+          Prince Design Hub aims to become a world-class creative agency helping creators and brands grow through powerful visual content and digital branding.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+        <ul class="space-y-4">
+          <li><a href="#about"     onclick="smoothTo(event,'#about')"     class="text-slate-400 hover:text-amber-400 transition-colors">About</a></li>
+          <li><a href="#services"  onclick="smoothTo(event,'#services')"  class="text-slate-400 hover:text-amber-400 transition-colors">Services</a></li>
+          <li><a href="#portfolio" onclick="smoothTo(event,'#portfolio')" class="text-slate-400 hover:text-amber-400 transition-colors">Portfolio</a></li>
+          <li><a href="#pricing"   onclick="smoothTo(event,'#pricing')"   class="text-slate-400 hover:text-amber-400 transition-colors">Pricing</a></li>
+          <li><a href="#reviews"   onclick="smoothTo(event,'#reviews')"   class="text-slate-400 hover:text-amber-400 transition-colors">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-white mb-6 uppercase tracking-wider text-sm">Connect</h4>
+        <ul class="space-y-4">
+          <li><a href="#contact" onclick="smoothTo(event,'#contact')" class="text-slate-400 hover:text-amber-400 transition-colors">Contact Us</a></li>
+          <li><a href="https://wa.me/919054215316" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-amber-400 transition-colors">WhatsApp</a></li>
+          <li><a href="mailto:mrprince742009@gmail.com" class="text-slate-400 hover:text-amber-400 transition-colors">Email Us</a></li>
+          <li class="flex gap-4 mt-6">
+            <a href="https://www.instagram.com/___.prince.ptel.___?igsh=anQ4eTdiMjE0NjVi" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="https://youtube.com/@jayveerjetalvasanaofficial5536?si=JVD3QS48WP9htw-v" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">
+              <i class="fab fa-youtube text-xl"></i>
+            </a>
+            <a href="https://wa.me/919054215316" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">
+              <i class="fab fa-whatsapp text-xl"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-slate-500 text-sm">&copy; <span id="copy-year"></span> Prince Design Hub. All rights reserved.</p>
+      <div class="flex gap-6 text-sm text-slate-500">
+        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════
+     FLOATING BUTTONS (WhatsApp + Call)
+══════════════════════════════════════════════════════ -->
+<div class="fixed bottom-6 right-6 z-40 flex flex-col items-center gap-3">
+
+  <!-- Call -->
+  <div class="float-btn-wrap">
+    <span class="float-tooltip">Call Now</span>
+    <a href="tel:+919054215316"
+       class="w-[52px] h-[52px] rounded-full flex items-center justify-center text-white transition-transform hover:scale-110 active:scale-95"
+       style="background:#1d3a8f;box-shadow:0 4px 20px rgba(29,58,143,.45);">
+      <i class="fas fa-phone"></i>
+    </a>
+  </div>
+
+  <!-- WhatsApp -->
+  <div class="float-btn-wrap">
+    <span class="float-tooltip">Chat on WhatsApp</span>
+    <a href="https://wa.me/919054215316" target="_blank" rel="noopener noreferrer"
+       class="relative w-[56px] h-[56px] rounded-full flex items-center justify-center text-white transition-transform hover:scale-110 active:scale-95"
+       style="background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,.45);">
+      <span style="position:absolute;inset:0;border-radius:50%;background:#25D366;animation:wa-ping 2s ease-out infinite;opacity:.4;"></span>
+      <i class="fab fa-whatsapp text-2xl relative z-10"></i>
+    </a>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     QUICK INQUIRY WIDGET
+══════════════════════════════════════════════════════ -->
+<div class="fixed z-50 flex flex-col items-end" style="bottom:9.5rem;right:1.5rem;">
+
+  <!-- Popup -->
+  <div id="quick-popup" class="mb-3 w-[320px]" style="border-radius:1rem;overflow:hidden;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border:1px solid #e2e8f0;box-shadow:0 25px 50px rgba(15,23,42,.2);">
+    <div class="bg-primary text-white p-4 flex justify-between items-center">
+      <h4 class="font-bold font-serif text-lg">Quick Inquiry</h4>
+      <button onclick="closeQuick()" class="hover:bg-white/20 p-1 rounded-full transition-colors"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="p-5 space-y-4">
+      <div>
+        <input id="qi-name" type="text" placeholder="Your Name" oninput="validateQuick()"
+          class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 form-input text-slate-900 text-sm" />
+        <p class="field-error" id="qi-err-name">Name is required.</p>
+      </div>
+      <div>
+        <input id="qi-contact" type="text" placeholder="Phone Number or Email" oninput="validateQuick()"
+          class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 form-input text-slate-900 text-sm" />
+        <p class="field-error" id="qi-err-contact">Enter a valid 10-digit phone or email.</p>
+      </div>
+      <div>
+        <textarea id="qi-message" rows="3" placeholder="What do you need help with?" oninput="validateQuick()"
+          class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 form-input text-slate-900 text-sm resize-none"></textarea>
+        <p class="field-error" id="qi-err-msg">Message must be at least 5 characters.</p>
+      </div>
+      <button id="qi-submit" onclick="submitQuick()" disabled
+        class="w-full bg-primary text-white rounded-xl py-2.5 font-semibold text-sm flex items-center justify-center gap-2 transition-opacity disabled:opacity-50">
+        <i class="fab fa-whatsapp"></i> Send to WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <!-- Toggle button -->
+  <button onclick="toggleQuick()"
+    class="bg-white text-slate-900 border border-slate-200 shadow-xl px-5 py-3 rounded-full flex items-center gap-2 font-medium hover:bg-slate-50 transition-colors text-sm">
+    <i class="fas fa-comment-dots text-primary"></i>
+    Quick Inquiry
+  </button>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+/* ─── Init AOS ─── */
+AOS.init({ once: true, duration: 700, easing: 'ease-out' });
+
+/* ─── Copyright year ─── */
+document.getElementById('copy-year').textContent = new Date().getFullYear();
+
+/* ─── Smooth scroll ─── */
+function smoothTo(e, id) {
+  e.preventDefault();
+  const el = document.querySelector(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ─── Navbar scroll behavior (debounced) ─── */
+let navTimer;
+window.addEventListener('scroll', function() {
+  clearTimeout(navTimer);
+  navTimer = setTimeout(function() {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }, 50);
+}, { passive: true });
+
+/* ─── Mobile nav ─── */
+function toggleMobileNav() {
+  const mn = document.getElementById('mobile-nav');
+  const ic = document.getElementById('ham-icon');
+  mn.classList.toggle('open');
+  ic.className = mn.classList.contains('open') ? 'fas fa-times text-xl' : 'fas fa-bars text-xl';
+}
+function closeMobileNav() {
+  const mn = document.getElementById('mobile-nav');
+  const ic = document.getElementById('ham-icon');
+  mn.classList.remove('open');
+  ic.className = 'fas fa-bars text-xl';
+}
+
+/* ─── Stats counter ─── */
+function countUp(el, target, duration) {
+  let start = 0;
+  const t0 = performance.now();
+  function tick(now) {
+    const elapsed = now - t0;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(eased * target);
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const statsObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      const card = entry.target;
+      const numEl = card.querySelector('.stat-num');
+      const target = parseInt(card.dataset.target);
+      const delay = parseInt(card.dataset.aosDelay || '0');
+      setTimeout(function() { countUp(numEl, target, 1600); }, delay);
+      statsObserver.unobserve(card);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.stat-card').forEach(function(c) { statsObserver.observe(c); });
+
+/* ─── Portfolio video toggle ─── */
+let currentVideo = null;
+function toggleVideo(card) {
+  const video = card.querySelector('video');
+  const overlay = card.querySelector('.overlay');
+  if (currentVideo && currentVideo !== video) {
+    currentVideo.pause();
+    const prevCard = currentVideo.closest('.video-card');
+    if (prevCard) prevCard.querySelector('.overlay').style.opacity = '1';
+  }
+  if (video.paused) {
+    video.play();
+    overlay.style.opacity = '0';
+    currentVideo = video;
+  } else {
+    video.pause();
+    overlay.style.opacity = '1';
+    currentVideo = null;
+  }
+}
+
+/* ─── Pricing WhatsApp ─── */
+function bookPackage(name) {
+  const text = encodeURIComponent('Hi Prince Design Hub, I am interested in the ' + name + ' package.');
+  window.open('https://wa.me/919054215316?text=' + text, '_blank');
+}
+
+/* ─── Reviews system ─── */
+const SEED_REVIEWS = [
+  { id:'1', name:'Sarah Jenkins', rating:5, text:'Prince Design Hub completely transformed my YouTube channel. The editing is crisp, the pacing is perfect, and my retention rate has skyrocketed since we started working together.', date: new Date(Date.now() - 30*24*60*60*1000).toISOString() },
+  { id:'2', name:'David Chen',    rating:5, text:'The branding package we got was incredible. Prince has a real eye for what looks premium. Our engagement on Instagram doubled in the first month.', date: new Date(Date.now() - 15*24*60*60*1000).toISOString() },
+  { id:'3', name:'Elena Rodriguez', rating:5, text:'Fast turnaround and cinematic quality. The reel edits are exactly what I needed for my business. Highly recommend!', date: new Date(Date.now() - 5*24*60*60*1000).toISOString() },
+];
+
+function getReviews() {
+  try {
+    const stored = localStorage.getItem('pv_reviews');
+    if (stored) return JSON.parse(stored);
+  } catch(e) {}
+  localStorage.setItem('pv_reviews', JSON.stringify(SEED_REVIEWS));
+  return SEED_REVIEWS;
+}
+
+function saveReviews(arr) {
+  try { localStorage.setItem('pv_reviews', JSON.stringify(arr)); } catch(e) {}
+}
+
+function getInitials(name) {
+  return name.split(' ').map(function(n){ return n[0]; }).join('').substring(0,2).toUpperCase();
+}
+
+function renderStars(rating) {
+  let html = '';
+  for (let i=1;i<=5;i++) {
+    html += '<i class="fas fa-star text-sm ' + (i<=rating?'text-amber-400':'text-slate-600') + '"></i>';
+  }
+  return html;
+}
+
+function renderReviews() {
+  const reviews = getReviews();
+  const grid = document.getElementById('reviews-grid');
+  grid.innerHTML = '';
+  reviews.forEach(function(r) {
+    const date = new Date(r.date).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'});
+    const card = document.createElement('div');
+    card.className = 'bg-slate-800 p-8 rounded-3xl border border-slate-700 flex flex-col';
+    card.innerHTML =
+      '<div class="flex gap-1 mb-6">' + renderStars(r.rating) + '</div>' +
+      '<p class="text-slate-300 leading-relaxed font-light flex-grow mb-8">&ldquo;' + r.text + '&rdquo;</p>' +
+      '<div class="flex items-center gap-4 mt-auto">' +
+        '<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg shrink-0">' + getInitials(r.name) + '</div>' +
+        '<div><h4 class="font-bold text-white">' + r.name + '</h4><span class="text-xs text-slate-500">' + date + '</span></div>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+}
+renderReviews();
+
+let currentRating = 5;
+function setRating(val) {
+  currentRating = val;
+  document.querySelectorAll('.star-btn').forEach(function(btn, i) {
+    if (i < val) { btn.classList.add('active','text-amber-400'); btn.classList.remove('text-slate-600'); }
+    else { btn.classList.remove('active','text-amber-400'); btn.classList.add('text-slate-600'); }
+  });
+}
+
+function toggleReviewForm() {
+  const wrap = document.getElementById('review-form-wrap');
+  const btn = document.getElementById('review-toggle-btn');
+  wrap.classList.toggle('open');
+  btn.textContent = wrap.classList.contains('open') ? 'Cancel' : 'Leave a Review';
+}
+
+function submitReview() {
+  const name = document.getElementById('review-name').value.trim();
+  const text = document.getElementById('review-text').value.trim();
+  if (!name || !text) return;
+  const btn = document.getElementById('submit-review-btn');
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+  setTimeout(function() {
+    const reviews = getReviews();
+    const newReview = { id: Date.now().toString(), name: name, rating: currentRating, text: text, date: new Date().toISOString() };
+    reviews.unshift(newReview);
+    saveReviews(reviews);
+    renderReviews();
+    document.getElementById('review-name').value = '';
+    document.getElementById('review-text').value = '';
+    setRating(5);
+    btn.textContent = 'Submit Review';
+    btn.disabled = false;
+    document.getElementById('review-form-wrap').classList.remove('open');
+    document.getElementById('review-toggle-btn').textContent = 'Leave a Review';
+  }, 800);
+}
+
+/* ─── Appointment form ─── */
+(function() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('appt-date').min = today;
+})();
+
+function showErr(id, show) {
+  const el = document.getElementById(id);
+  if (show) el.classList.add('visible'); else el.classList.remove('visible');
+}
+function markInput(id, invalid) {
+  const el = document.getElementById(id);
+  if (invalid) el.classList.add('input-error'); else el.classList.remove('input-error');
+}
+
+function submitAppointment(e) {
+  e.preventDefault();
+  const name    = document.getElementById('appt-name').value.trim();
+  const phone   = document.getElementById('appt-phone').value.trim();
+  const email   = document.getElementById('appt-email').value.trim();
+  const service = document.getElementById('appt-service').value;
+  const date    = document.getElementById('appt-date').value;
+  const time    = document.getElementById('appt-time').value;
+  const details = document.getElementById('appt-details').value.trim();
+
+  let valid = true;
+
+  if (name.length < 2)  { showErr('err-name',true);    markInput('appt-name',true);    valid=false; } else { showErr('err-name',false);    markInput('appt-name',false); }
+  if (!/^\d{10}$/.test(phone)) { showErr('err-phone',true); markInput('appt-phone',true); valid=false; } else { showErr('err-phone',false); markInput('appt-phone',false); }
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showErr('err-email',true); markInput('appt-email',true); valid=false; } else { showErr('err-email',false); markInput('appt-email',false); }
+  if (!service) { showErr('err-service',true); markInput('appt-service',true); valid=false; } else { showErr('err-service',false); markInput('appt-service',false); }
+  if (!date || new Date(date) < new Date(new Date().toDateString())) { showErr('err-date',true); markInput('appt-date',true); valid=false; } else { showErr('err-date',false); markInput('appt-date',false); }
+  if (details.length < 10) { showErr('err-details',true); markInput('appt-details',true); valid=false; } else { showErr('err-details',false); markInput('appt-details',false); }
+
+  if (!valid) return;
+
+  const btn = document.getElementById('appt-submit');
+  const btnText = document.getElementById('appt-btn-text');
+  const spinner = document.getElementById('appt-spinner');
+  btn.disabled = true;
+  btnText.textContent = 'Processing...';
+  spinner.classList.remove('hidden');
+
+  setTimeout(function() {
+    const msg = [
+      '*New Appointment Booking*',
+      '*Name:* ' + name,
+      '*Phone:* ' + phone,
+      email ? '*Email:* ' + email : '',
+      '*Service:* ' + service,
+      '*Date:* ' + date,
+      time ? '*Time:* ' + time : '',
+      '',
+      '*Project Details:*',
+      details
+    ].filter(Boolean).join('\n');
+
+    window.open('https://wa.me/919054215316?text=' + encodeURIComponent(msg), '_blank');
+
+    document.getElementById('appt-form').style.display = 'none';
+    document.getElementById('appt-success').style.display = 'block';
+
+    setTimeout(function() {
+      document.getElementById('appt-form').style.display = 'block';
+      document.getElementById('appt-success').style.display = 'none';
+      document.getElementById('appt-form').reset();
+      btn.disabled = false;
+      btnText.textContent = 'Book Appointment on WhatsApp';
+      spinner.classList.add('hidden');
+    }, 4000);
+  }, 1000);
+}
+
+/* ─── Quick Inquiry ─── */
+let quickOpen = false;
+function toggleQuick() {
+  quickOpen = !quickOpen;
+  const popup = document.getElementById('quick-popup');
+  if (quickOpen) { popup.style.display='block'; setTimeout(function(){ popup.classList.add('open'); },10); }
+  else { popup.classList.remove('open'); setTimeout(function(){ popup.style.display='none'; },250); }
+}
+function closeQuick() {
+  quickOpen = false;
+  const popup = document.getElementById('quick-popup');
+  popup.classList.remove('open');
+  setTimeout(function(){ popup.style.display='none'; },250);
+}
+
+function validateQuick() {
+  const name    = document.getElementById('qi-name').value.trim();
+  const contact = document.getElementById('qi-contact').value.trim();
+  const msg     = document.getElementById('qi-message').value.trim();
+  const submit  = document.getElementById('qi-submit');
+
+  const nameOk    = name.length > 0;
+  const contactOk = /^\d{10}$/.test(contact) || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+  const msgOk     = msg.length >= 5;
+
+  document.getElementById('qi-err-name').classList.toggle('visible', !nameOk && name.length>0);
+  document.getElementById('qi-err-contact').classList.toggle('visible', !contactOk && contact.length>0);
+  document.getElementById('qi-err-msg').classList.toggle('visible', !msgOk && msg.length>0);
+
+  submit.disabled = !(nameOk && contactOk && msgOk);
+}
+
+function submitQuick() {
+  const name    = document.getElementById('qi-name').value.trim();
+  const contact = document.getElementById('qi-contact').value.trim();
+  const msg     = document.getElementById('qi-message').value.trim();
+  const waMsg   = '*Quick Inquiry*\n*Name:* ' + name + '\n*Contact:* ' + contact + '\n*Message:* ' + msg;
+  window.open('https://wa.me/919054215316?text=' + encodeURIComponent(waMsg), '_blank');
+  closeQuick();
+  document.getElementById('qi-name').value    = '';
+  document.getElementById('qi-contact').value = '';
+  document.getElementById('qi-message').value = '';
+  document.getElementById('qi-submit').disabled = true;
+}
+
+/* ─── Page-load wipe cleanup (signature edit-cut reveal) ─── */
+setTimeout(function() {
+  const wipe = document.getElementById('page-wipe');
+  if (wipe) wipe.style.display = 'none';
+}, 1300);
+
+/* ─── Real 3D mouse-tilt for service cards & the about portrait ─── */
+function attachTilt(el, maxTilt) {
+  el.addEventListener('mousemove', function(e) {
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    const rotY = (x - 0.5) * maxTilt * 2;
+    const rotX = (0.5 - y) * maxTilt * 2;
+    el.style.transform = 'perspective(1000px) rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg) translateY(-4px) scale(1.02)';
+  });
+  el.addEventListener('mouseleave', function() { el.style.transform = ''; });
+}
+document.querySelectorAll('.tilt-3d').forEach(function(el) {
+  attachTilt(el, el.classList.contains('tilt-strong') ? 13 : 7);
+});
+
+/* ─── Hero ambient gold glow follows the cursor ─── */
+(function() {
+  const heroEl = document.getElementById('home');
+  const glowEl = document.getElementById('hero-glow');
+  if (!heroEl || !glowEl) return;
+  heroEl.addEventListener('mousemove', function(e) {
+    const r = heroEl.getBoundingClientRect();
+    glowEl.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+    glowEl.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+  });
+})();
+
+</script>
+
+
+<!-- Premium Upgrade Pack -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+
+<style>
+#custom-cursor{position:fixed;width:20px;height:20px;border:2px solid #D4AF37;border-radius:50%;
+pointer-events:none;z-index:99999;transform:translate(-50%,-50%);backdrop-filter:blur(2px)}
+.magnetic-btn{transition:transform .2s ease}
+</style>
+
+<div id="custom-cursor"></div>
+
+<script>
+const cursor=document.getElementById('custom-cursor');
+document.addEventListener('mousemove',e=>{
+ cursor.style.left=e.clientX+'px';
+ cursor.style.top=e.clientY+'px';
+});
+
+document.querySelectorAll('a,button').forEach(el=>{
+ el.classList.add('magnetic-btn');
+ el.addEventListener('mousemove',()=>el.style.transform='translateY(-3px) scale(1.03)');
+ el.addEventListener('mouseleave',()=>el.style.transform='');
+});
+
+if(window.Lenis){
+ const lenis=new Lenis();
+ function raf(t){lenis.raf(t);requestAnimationFrame(raf);}
+ requestAnimationFrame(raf);
+}
+
+if(window.gsap){
+ gsap.registerPlugin(ScrollTrigger);
+ gsap.utils.toArray('section').forEach(sec=>{
+   gsap.from(sec,{opacity:0,y:60,duration:1,
+   scrollTrigger:{trigger:sec,start:'top 85%'}});
+ });
+}
+</script>
+
+</body>
+</html>
